@@ -1,0 +1,890 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nanjangud Teachers Layout Shuttle Championship 2026</title>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;600;700&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        :root {
+            --primary: #E63946;
+            --secondary: #457B9D;
+            --accent: #F1C40F;
+            --dark: #1D3557;
+            --light: #F8F9FA;
+            --success: #06D6A0;
+            --text: #2B2D42;
+        }
+        
+        body {
+            font-family: 'Barlow', sans-serif;
+            background: linear-gradient(135deg, #1D3557 0%, #457B9D 100%);
+            color: var(--text);
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0;
+        }
+        
+        /* Loading State */
+        .loading {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            color: white;
+        }
+        
+        .loading h2 {
+            margin-top: 20px;
+            font-size: 1.5rem;
+        }
+        
+        .spinner {
+            width: 50px;
+            height: 50px;
+            border: 5px solid rgba(255,255,255,0.3);
+            border-top-color: white;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+        
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, var(--dark) 0%, var(--secondary) 100%);
+            color: white;
+            padding: 60px 20px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -10%;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(230,57,70,0.2) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+        
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: -30%;
+            left: -5%;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(241,196,15,0.15) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 2;
+        }
+        
+        .hero h1 {
+            font-family: 'Oswald', sans-serif;
+            font-size: clamp(1.8rem, 6vw, 3.5rem);
+            font-weight: 700;
+            letter-spacing: 2px;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            text-shadow: 3px 3px 6px rgba(0,0,0,0.3);
+        }
+        
+        .hero .location {
+            font-size: clamp(1.1rem, 3vw, 1.5rem);
+            opacity: 0.95;
+            font-weight: 500;
+            letter-spacing: 1px;
+            margin-bottom: 5px;
+        }
+        
+        .hero .subtitle {
+            font-size: clamp(0.9rem, 2.5vw, 1.1rem);
+            opacity: 0.85;
+            font-weight: 400;
+        }
+        
+        .hero .tournament-info {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 25px;
+            flex-wrap: wrap;
+        }
+        
+        .info-badge {
+            background: rgba(255,255,255,0.15);
+            backdrop-filter: blur(10px);
+            padding: 10px 20px;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            border: 2px solid rgba(255,255,255,0.3);
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .info-badge:hover {
+            background: rgba(255,255,255,0.25);
+            transform: translateY(-2px);
+        }
+        
+        /* Last Updated */
+        .last-updated {
+            background: rgba(241,196,15,0.2);
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            margin-top: 15px;
+            display: inline-block;
+        }
+        
+        /* Main Content */
+        .main-content {
+            background: var(--light);
+            min-height: 100vh;
+        }
+        
+        .section {
+            padding: 50px 20px;
+        }
+        
+        .section-title {
+            font-family: 'Oswald', sans-serif;
+            font-size: clamp(1.8rem, 5vw, 2.8rem);
+            color: var(--dark);
+            margin-bottom: 30px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            text-align: center;
+            position: relative;
+            display: inline-block;
+            width: 100%;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: var(--accent);
+            border-radius: 2px;
+        }
+        
+        /* Standings Table */
+        .standings-wrapper {
+            max-width: 1000px;
+            margin: 0 auto;
+            overflow-x: auto;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.15);
+            border-radius: 15px;
+        }
+        
+        .standings-table {
+            width: 100%;
+            border-collapse: collapse;
+            background: white;
+        }
+        
+        .standings-table thead {
+            background: linear-gradient(135deg, var(--dark), var(--secondary));
+            color: white;
+        }
+        
+        .standings-table th {
+            padding: 20px 15px;
+            font-family: 'Oswald', sans-serif;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 0.9rem;
+        }
+        
+        .standings-table tbody tr {
+            border-bottom: 1px solid #E8E8E8;
+            transition: all 0.3s;
+        }
+        
+        .standings-table tbody tr:hover {
+            background: rgba(69,123,157,0.05);
+            transform: scale(1.01);
+        }
+        
+        .standings-table td {
+            padding: 18px 15px;
+            font-size: 1.05rem;
+            font-weight: 500;
+            text-align: center;
+        }
+        
+        .rank-cell {
+            font-family: 'Oswald', sans-serif;
+            font-weight: 700;
+            font-size: 1.4rem;
+            color: var(--primary);
+            width: 60px;
+        }
+        
+        .team-cell {
+            font-weight: 600;
+            font-size: 1.15rem;
+            color: var(--dark);
+            text-align: left;
+        }
+        
+        .qualified-row {
+            background: linear-gradient(90deg, rgba(6,214,160,0.08) 0%, rgba(6,214,160,0.02) 100%);
+            border-left: 4px solid var(--success);
+        }
+        
+        .qualified-row .rank-cell::before {
+            content: '✓ ';
+            color: var(--success);
+            margin-right: 5px;
+        }
+        
+        /* Match Schedule */
+        .schedule-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 25px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .match-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            transition: all 0.3s;
+        }
+        
+        .match-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+        }
+        
+        .match-header {
+            background: linear-gradient(135deg, var(--secondary), var(--primary));
+            color: white;
+            padding: 12px 20px;
+            font-family: 'Oswald', sans-serif;
+            font-weight: 600;
+            letter-spacing: 1px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .match-number {
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+        
+        .match-status {
+            font-size: 0.85rem;
+            padding: 4px 12px;
+            border-radius: 20px;
+            background: rgba(255,255,255,0.2);
+        }
+        
+        .match-status.completed {
+            background: var(--success);
+        }
+        
+        .match-body {
+            padding: 25px;
+        }
+        
+        .match-versus {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .team-block {
+            flex: 1;
+            text-align: center;
+            padding: 10px;
+            border-radius: 10px;
+        }
+        
+        .team-name {
+            font-weight: 700;
+            font-size: 1.15rem;
+            color: var(--dark);
+            margin-bottom: 10px;
+        }
+        
+        .team-score {
+            font-family: 'Oswald', sans-serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--primary);
+        }
+        
+        .team-score.winner {
+            color: var(--success);
+        }
+        
+        .vs-divider {
+            font-family: 'Oswald', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #CCC;
+        }
+        
+        /* Knockout Bracket */
+        .bracket-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+        }
+        
+        .bracket-note {
+            text-align: center;
+            color: #666;
+            font-size: 1.1rem;
+            margin-bottom: 30px;
+            padding: 15px;
+            background: #FFF9E6;
+            border-radius: 10px;
+            border-left: 5px solid var(--accent);
+        }
+        
+        .bracket-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            margin-bottom: 50px;
+        }
+        
+        .bracket-match {
+            background: var(--light);
+            border-radius: 12px;
+            padding: 25px;
+            border: 2px solid #E0E0E0;
+        }
+        
+        .bracket-match h4 {
+            font-family: 'Oswald', sans-serif;
+            text-align: center;
+            color: var(--secondary);
+            font-size: 1.3rem;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .bracket-team {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px;
+            margin: 10px 0;
+            background: white;
+            border-radius: 8px;
+            border: 2px solid transparent;
+            transition: all 0.3s;
+        }
+        
+        .bracket-team:hover {
+            border-color: var(--accent);
+            transform: translateX(5px);
+        }
+        
+        .bracket-team-name {
+            font-weight: 700;
+            font-size: 1.1rem;
+        }
+        
+        .bracket-final {
+            max-width: 500px;
+            margin: 0 auto;
+        }
+        
+        .bracket-final .bracket-match {
+            border: 3px solid var(--accent);
+            background: linear-gradient(135deg, rgba(241,196,15,0.05), rgba(230,57,70,0.05));
+        }
+        
+        /* Refresh Button */
+        .refresh-btn {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: var(--accent);
+            color: var(--dark);
+            border: none;
+            padding: 15px 25px;
+            border-radius: 50px;
+            font-weight: 700;
+            cursor: pointer;
+            box-shadow: 0 5px 20px rgba(241,196,15,0.4);
+            transition: all 0.3s;
+            z-index: 100;
+            font-size: 1rem;
+        }
+        
+        .refresh-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(241,196,15,0.5);
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero {
+                padding: 40px 15px;
+            }
+            
+            .section {
+                padding: 30px 15px;
+            }
+            
+            .schedule-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .bracket-grid {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+            
+            .standings-wrapper {
+                margin: 0 -15px;
+                border-radius: 0;
+            }
+            
+            .refresh-btn {
+                bottom: 20px;
+                right: 20px;
+                padding: 12px 20px;
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Loading State -->
+    <div id="loadingScreen" class="loading">
+        <div class="spinner"></div>
+        <h2>Loading Tournament Data...</h2>
+    </div>
+
+    <!-- Main Content (hidden until loaded) -->
+    <div id="mainContent" style="display: none;">
+        <!-- Hero Section -->
+        <div class="hero">
+            <div class="hero-content">
+                <h1>🏸 Shuttle Championship 2026</h1>
+                <p class="location">Nanjangud · Teachers Layout</p>
+                <p class="subtitle">Weekend Badminton Tournament</p>
+                <div class="tournament-info">
+                    <a href="#standings" style="text-decoration: none; color: inherit;">
+                        <div class="info-badge">📅 June 1-2 & 8-9</div>
+                    </a>
+                    <a href="#standings" style="text-decoration: none; color: inherit;">
+                        <div class="info-badge">🏟️ <span id="teamCount">7</span> Teams</div>
+                    </a>
+                    <a href="#schedule" style="text-decoration: none; color: inherit;">
+                        <div class="info-badge">🎯 <span id="matchCount">21</span> Matches</div>
+                    </a>
+                    <a href="#knockouts" style="text-decoration: none; color: inherit;">
+                        <div class="info-badge">🏆 Top 4 to Semifinals</div>
+                    </a>
+                </div>
+                <div class="last-updated">
+                    ⏱️ Last updated: <span id="lastUpdated">Loading...</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Main Content -->
+        <div class="main-content">
+            <!-- Standings Section -->
+            <div class="section" id="standings">
+                <div class="container">
+                    <h2 class="section-title">📊 Live Standings</h2>
+                    <div class="standings-wrapper">
+                        <table class="standings-table">
+                            <thead>
+                                <tr>
+                                    <th>Rank</th>
+                                    <th>Team</th>
+                                    <th>P</th>
+                                    <th>W</th>
+                                    <th>L</th>
+                                    <th>PF</th>
+                                    <th>PA</th>
+                                    <th>Diff</th>
+                                </tr>
+                            </thead>
+                            <tbody id="standingsBody">
+                                <!-- Populated by JS -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Match Schedule Section -->
+            <div class="section" id="schedule" style="background: #FAFAFA;">
+                <div class="container">
+                    <h2 class="section-title">📅 Match Schedule</h2>
+                    <div class="schedule-grid" id="scheduleGrid">
+                        <!-- Populated by JS -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- Knockout Bracket Section -->
+            <div class="section" id="knockouts">
+                <div class="container">
+                    <h2 class="section-title">🏆 Knockout Stage</h2>
+                    <div class="bracket-container">
+                        <div class="bracket-note">
+                            Top 4 teams from league stage advance to semifinals
+                        </div>
+                        
+                        <div class="bracket-grid">
+                            <div class="bracket-match">
+                                <h4>Semifinal 1</h4>
+                                <div class="bracket-team">
+                                    <span class="bracket-team-name" id="sf1Team1">Rank #1</span>
+                                    <span id="sf1Score1">-</span>
+                                </div>
+                                <div class="bracket-team">
+                                    <span class="bracket-team-name" id="sf1Team2">Rank #4</span>
+                                    <span id="sf1Score2">-</span>
+                                </div>
+                            </div>
+                            
+                            <div class="bracket-match">
+                                <h4>Semifinal 2</h4>
+                                <div class="bracket-team">
+                                    <span class="bracket-team-name" id="sf2Team1">Rank #2</span>
+                                    <span id="sf2Score1">-</span>
+                                </div>
+                                <div class="bracket-team">
+                                    <span class="bracket-team-name" id="sf2Team2">Rank #3</span>
+                                    <span id="sf2Score2">-</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="bracket-final">
+                            <div class="bracket-match">
+                                <h4>🏆 Grand Final</h4>
+                                <div class="bracket-team">
+                                    <span class="bracket-team-name" id="finalTeam1">SF1 Winner</span>
+                                    <span id="finalScore1">-</span>
+                                </div>
+                                <div class="bracket-team">
+                                    <span class="bracket-team-name" id="finalTeam2">SF2 Winner</span>
+                                    <span id="finalScore2">-</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Refresh Button -->
+        <button class="refresh-btn" onclick="loadData()">🔄 Refresh</button>
+    </div>
+
+    <script>
+        // ========================================
+        // 🔗 GOOGLE SHEET CONFIGURATION
+        // ========================================
+        
+        // REPLACE THIS WITH YOUR GOOGLE SHEET URL
+        const SHEET_URL = 'YOUR_GOOGLE_SHEET_URL_HERE';
+        
+        // Sheet names (tabs in your Google Sheet)
+        const TEAMS_SHEET = 'Teams';
+        const MATCHES_SHEET = 'Matches';
+        
+        // ========================================
+        // Main Data Loading Function
+        // ========================================
+        
+        let tournamentData = {
+            teams: {},
+            matches: []
+        };
+        
+        async function loadData() {
+            try {
+                // Show loading if main content is visible
+                if (document.getElementById('mainContent').style.display !== 'none') {
+                    showLoading();
+                }
+                
+                // For demo purposes, use hardcoded data
+                // In production, this would fetch from Google Sheets
+                await loadHardcodedData();
+                
+                // Calculate standings
+                calculateStandings();
+                
+                // Render everything
+                renderStandings();
+                renderSchedule();
+                updateKnockouts();
+                updateLastUpdated();
+                
+                // Hide loading, show content
+                hideLoading();
+                
+            } catch (error) {
+                console.error('Error loading data:', error);
+                alert('Error loading tournament data. Please try again.');
+            }
+        }
+        
+        // Temporary hardcoded data (replace with Google Sheets fetch)
+        async function loadHardcodedData() {
+            return new Promise(resolve => {
+                tournamentData = {
+                    teams: {
+                        "THUNDER SMASH": {
+                            player1: "Samrudh",
+                            player2: "Thanvik"
+                        },
+                        "SKATE MASTERS": {
+                            player1: "Manoj",
+                            player2: "Hithesh"
+                        },
+                        "HACK ATTACK": {
+                            player1: "Nikhil",
+                            player2: "Prajwal"
+                        },
+                        "AARYA ACES": {
+                            player1: "Aarya",
+                            player2: "Manja"
+                        },
+                        "NIMAY NINJAS": {
+                            player1: "Nimay",
+                            player2: "Ballu"
+                        },
+                        "CHIRANTH CHAMPIONS": {
+                            player1: "Chiranth",
+                            player2: "Barath"
+                        },
+                        "RUCHUSMITHA ROCKETS": {
+                            player1: "Ruchusmitha",
+                            player2: "Jothika"
+                        }
+                    },
+                    matches: [
+                        // SATURDAY MATCHES (Team Chiranth & Ruchusmitha available)
+                        { id: 1, team1: "CHIRANTH CHAMPIONS", team2: "NIMAY NINJAS", time: "6:00 AM", day: "Saturday", score1: null, score2: null, completed: false },
+                        { id: 2, team1: "CHIRANTH CHAMPIONS", team2: "THUNDER SMASH", time: "6:10 AM", day: "Saturday", score1: null, score2: null, completed: false },
+                        { id: 3, team1: "RUCHUSMITHA ROCKETS", team2: "NIMAY NINJAS", time: "6:20 AM", day: "Saturday", score1: null, score2: null, completed: false },
+                        { id: 4, team1: "CHIRANTH CHAMPIONS", team2: "SKATE MASTERS", time: "6:30 AM", day: "Saturday", score1: null, score2: null, completed: false },
+                        { id: 5, team1: "RUCHUSMITHA ROCKETS", team2: "THUNDER SMASH", time: "6:40 AM", day: "Saturday", score1: null, score2: null, completed: false },
+                        { id: 6, team1: "CHIRANTH CHAMPIONS", team2: "HACK ATTACK", time: "6:50 AM", day: "Saturday", score1: null, score2: null, completed: false },
+                        { id: 7, team1: "RUCHUSMITHA ROCKETS", team2: "SKATE MASTERS", time: "7:00 AM", day: "Saturday", score1: null, score2: null, completed: false },
+                        { id: 8, team1: "CHIRANTH CHAMPIONS", team2: "RUCHUSMITHA ROCKETS", time: "7:10 AM", day: "Saturday", score1: null, score2: null, completed: false },
+                        { id: 9, team1: "RUCHUSMITHA ROCKETS", team2: "HACK ATTACK", time: "7:20 AM", day: "Saturday", score1: null, score2: null, completed: false },
+                        { id: 10, team1: "THUNDER SMASH", team2: "SKATE MASTERS", time: "7:30 AM", day: "Saturday", score1: null, score2: null, completed: false },
+                        { id: 11, team1: "THUNDER SMASH", team2: "HACK ATTACK", time: "7:40 AM", day: "Saturday", score1: null, score2: null, completed: false },
+                        { id: 12, team1: "THUNDER SMASH", team2: "NIMAY NINJAS", time: "7:50 AM", day: "Saturday", score1: null, score2: null, completed: false },
+                        { id: 13, team1: "SKATE MASTERS", team2: "HACK ATTACK", time: "8:00 AM", day: "Saturday", score1: null, score2: null, completed: false },
+                        { id: 14, team1: "SKATE MASTERS", team2: "NIMAY NINJAS", time: "8:10 AM", day: "Saturday", score1: null, score2: null, completed: false },
+                        { id: 15, team1: "HACK ATTACK", team2: "NIMAY NINJAS", time: "8:20 AM", day: "Saturday", score1: null, score2: null, completed: false },
+                        
+                        // SUNDAY MATCHES (Team Aarya available)
+                        { id: 16, team1: "AARYA ACES", team2: "THUNDER SMASH", time: "6:00 AM", day: "Sunday", score1: null, score2: null, completed: false },
+                        { id: 17, team1: "AARYA ACES", team2: "SKATE MASTERS", time: "6:10 AM", day: "Sunday", score1: null, score2: null, completed: false },
+                        { id: 18, team1: "AARYA ACES", team2: "HACK ATTACK", time: "6:20 AM", day: "Sunday", score1: null, score2: null, completed: false },
+                        { id: 19, team1: "AARYA ACES", team2: "NIMAY NINJAS", time: "6:30 AM", day: "Sunday", score1: null, score2: null, completed: false },
+                        
+                        // NEXT SATURDAY (Remaining matches)
+                        { id: 20, team1: "AARYA ACES", team2: "CHIRANTH CHAMPIONS", time: "6:00 AM", day: "Next Saturday", score1: null, score2: null, completed: false },
+                        { id: 21, team1: "AARYA ACES", team2: "RUCHUSMITHA ROCKETS", time: "6:10 AM", day: "Next Saturday", score1: null, score2: null, completed: false }
+                    ]
+                };
+                
+                // Update counts
+                document.getElementById('teamCount').textContent = Object.keys(tournamentData.teams).length;
+                document.getElementById('matchCount').textContent = tournamentData.matches.length;
+                
+                resolve();
+            });
+        }
+        
+        function showLoading() {
+            document.getElementById('loadingScreen').style.display = 'flex';
+        }
+        
+        function hideLoading() {
+            document.getElementById('loadingScreen').style.display = 'none';
+            document.getElementById('mainContent').style.display = 'block';
+        }
+        
+        let standings = {};
+        
+        function calculateStandings() {
+            // Initialize standings
+            standings = {};
+            Object.keys(tournamentData.teams).forEach(team => {
+                standings[team] = {
+                    played: 0,
+                    won: 0,
+                    lost: 0,
+                    pointsFor: 0,
+                    pointsAgainst: 0,
+                    diff: 0
+                };
+            });
+            
+            // Calculate from matches
+            tournamentData.matches.forEach(match => {
+                if (match.completed && match.score1 !== null && match.score2 !== null) {
+                    standings[match.team1].played++;
+                    standings[match.team2].played++;
+                    standings[match.team1].pointsFor += match.score1;
+                    standings[match.team1].pointsAgainst += match.score2;
+                    standings[match.team2].pointsFor += match.score2;
+                    standings[match.team2].pointsAgainst += match.score1;
+                    
+                    if (match.score1 > match.score2) {
+                        standings[match.team1].won++;
+                        standings[match.team2].lost++;
+                    } else {
+                        standings[match.team2].won++;
+                        standings[match.team1].lost++;
+                    }
+                    
+                    standings[match.team1].diff = standings[match.team1].pointsFor - standings[match.team1].pointsAgainst;
+                    standings[match.team2].diff = standings[match.team2].pointsFor - standings[match.team2].pointsAgainst;
+                }
+            });
+        }
+        
+        function renderStandings() {
+            const sortedTeams = Object.entries(standings).sort((a, b) => {
+                if (b[1].won !== a[1].won) return b[1].won - a[1].won;
+                if (b[1].diff !== a[1].diff) return b[1].diff - a[1].diff;
+                return b[1].pointsFor - a[1].pointsFor;
+            });
+            
+            const tbody = document.getElementById('standingsBody');
+            tbody.innerHTML = sortedTeams.map(([team, stats], idx) => `
+                <tr class="${idx < 4 ? 'qualified-row' : ''}">
+                    <td class="rank-cell">${idx + 1}</td>
+                    <td class="team-cell">${team}</td>
+                    <td>${stats.played}</td>
+                    <td>${stats.won}</td>
+                    <td>${stats.lost}</td>
+                    <td>${stats.pointsFor}</td>
+                    <td>${stats.pointsAgainst}</td>
+                    <td style="font-weight: 700; color: ${stats.diff >= 0 ? '#06D6A0' : '#E63946'};">
+                        ${stats.diff > 0 ? '+' : ''}${stats.diff}
+                    </td>
+                </tr>
+            `).join('');
+            
+            updateKnockouts(sortedTeams);
+        }
+        
+        function renderSchedule() {
+            const grid = document.getElementById('scheduleGrid');
+            grid.innerHTML = tournamentData.matches.map(match => {
+                const winner1 = match.completed && match.score1 > match.score2;
+                const winner2 = match.completed && match.score2 > match.score1;
+                
+                return `
+                    <div class="match-card">
+                        <div class="match-header">
+                            <span class="match-number">${match.day} • Match #${match.id} • ${match.time}</span>
+                            <span class="match-status ${match.completed ? 'completed' : ''}">
+                                ${match.completed ? '✓ Completed' : '⏳ Upcoming'}
+                            </span>
+                        </div>
+                        <div class="match-body">
+                            <div class="match-versus">
+                                <div class="team-block">
+                                    <div class="team-name">${match.team1}</div>
+                                    <div class="team-score ${winner1 ? 'winner' : ''}">
+                                        ${match.score1 !== null ? match.score1 : '-'}
+                                    </div>
+                                </div>
+                                <div class="vs-divider">VS</div>
+                                <div class="team-block">
+                                    <div class="team-name">${match.team2}</div>
+                                    <div class="team-score ${winner2 ? 'winner' : ''}">
+                                        ${match.score2 !== null ? match.score2 : '-'}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+        }
+        
+        function updateKnockouts(sortedTeams) {
+            if (sortedTeams && sortedTeams.length >= 4 && sortedTeams[0][1].played >= 6) {
+                document.getElementById('sf1Team1').textContent = sortedTeams[0][0];
+                document.getElementById('sf1Team2').textContent = sortedTeams[3][0];
+                document.getElementById('sf2Team1').textContent = sortedTeams[1][0];
+                document.getElementById('sf2Team2').textContent = sortedTeams[2][0];
+            }
+        }
+        
+        function updateLastUpdated() {
+            const now = new Date();
+            const timeStr = now.toLocaleTimeString('en-IN', { 
+                hour: '2-digit', 
+                minute: '2-digit',
+                hour12: true 
+            });
+            const dateStr = now.toLocaleDateString('en-IN', {
+                day: 'numeric',
+                month: 'short'
+            });
+            document.getElementById('lastUpdated').textContent = `${dateStr} at ${timeStr}`;
+        }
+        
+        // Auto-refresh every 30 seconds
+        setInterval(() => {
+            loadData();
+        }, 30000);
+        
+        // Initial load
+        loadData();
+    </script>
+</body>
+</html>
