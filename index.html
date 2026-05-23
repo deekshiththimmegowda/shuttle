@@ -507,6 +507,9 @@
                 <h1>🏸 Shuttle Championship 2026</h1>
                 <p class="location">Nanjangud · Teachers Layout</p>
                 <p class="subtitle">Weekend Badminton Tournament</p>
+                <p class="subtitle" style="margin-top: 8px; font-size: 0.95em; opacity: 0.9;">
+                    🎙️ Organized by: <strong>Shivkumar Sir</strong> &amp; <strong>Nagabhushan Sir</strong>
+                </p>
                 <div class="tournament-info">
                     <a href="#standings" style="text-decoration: none; color: inherit;">
                         <div class="info-badge">📅 June 1-2 & 8-9</div>
@@ -545,6 +548,7 @@
                                     <th>PF</th>
                                     <th>PA</th>
                                     <th>Diff</th>
+                                    <th>Pts</th>
                                 </tr>
                             </thead>
                             <tbody id="standingsBody">
@@ -765,7 +769,8 @@
                     lost: 0,
                     pointsFor: 0,
                     pointsAgainst: 0,
-                    diff: 0
+                    diff: 0,
+                    points: 0
                 };
             });
             
@@ -786,16 +791,18 @@
                         standings[match.team2].won++;
                         standings[match.team1].lost++;
                     }
-                    
+
                     standings[match.team1].diff = standings[match.team1].pointsFor - standings[match.team1].pointsAgainst;
                     standings[match.team2].diff = standings[match.team2].pointsFor - standings[match.team2].pointsAgainst;
+                    standings[match.team1].points = standings[match.team1].won * 2;
+                    standings[match.team2].points = standings[match.team2].won * 2;
                 }
             });
         }
         
         function renderStandings() {
             const sortedTeams = Object.entries(standings).sort((a, b) => {
-                if (b[1].won !== a[1].won) return b[1].won - a[1].won;
+                if (b[1].points !== a[1].points) return b[1].points - a[1].points;
                 if (b[1].diff !== a[1].diff) return b[1].diff - a[1].diff;
                 return b[1].pointsFor - a[1].pointsFor;
             });
@@ -813,6 +820,7 @@
                     <td style="font-weight: 700; color: ${stats.diff >= 0 ? '#06D6A0' : '#E63946'};">
                         ${stats.diff > 0 ? '+' : ''}${stats.diff}
                     </td>
+                    <td style="font-weight: 800; color: #FFD166;">${stats.points}</td>
                 </tr>
             `).join('');
             
