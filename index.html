@@ -739,7 +739,128 @@
             transform: translateY(-3px);
             box-shadow: 0 8px 25px rgba(241,196,15,0.5);
         }
-        
+
+        /* Organising Committee Band */
+        .committee-band {
+            background: linear-gradient(180deg, var(--cream) 0%, #EFE7CC 100%);
+            border-bottom: 1px solid rgba(212,175,55,0.3);
+            padding: 32px 16px 36px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .committee-band::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 3px;
+            background: linear-gradient(90deg,
+                transparent,
+                var(--accent) 30%,
+                var(--accent-light) 50%,
+                var(--accent) 70%,
+                transparent);
+        }
+
+        .committee-inner {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .committee-header {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 22px;
+        }
+
+        .committee-icon {
+            font-size: 1.15rem;
+            filter: drop-shadow(0 1px 2px rgba(212,175,55,0.3));
+        }
+
+        .committee-title {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-weight: 900;
+            font-size: clamp(1rem, 3.6vw, 1.35rem);
+            color: var(--primary-deep);
+            letter-spacing: 0.5px;
+            position: relative;
+        }
+
+        .committee-title::before,
+        .committee-title::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            width: 18px;
+            height: 1px;
+            background: rgba(11,46,34,0.25);
+        }
+        .committee-title::before { right: 100%; margin-right: 12px; }
+        .committee-title::after  { left: 100%;  margin-left: 12px; }
+
+        .committee-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 12px;
+            justify-items: center;
+        }
+
+        .organiser {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            min-width: 0;
+            width: 100%;
+        }
+
+        .organiser-badge {
+            width: 52px;
+            height: 52px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--primary), var(--primary-deep));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--accent-light);
+            font-family: 'Playfair Display', Georgia, serif;
+            font-weight: 900;
+            font-size: 1.5rem;
+            letter-spacing: 0;
+            margin-bottom: 8px;
+            box-shadow:
+                0 0 0 2px var(--cream),
+                0 0 0 3.5px var(--accent),
+                0 4px 12px rgba(11,46,34,0.18);
+            transition: transform 0.25s ease;
+        }
+
+        .organiser:hover .organiser-badge {
+            transform: translateY(-3px) scale(1.04);
+        }
+
+        .organiser-name {
+            font-family: 'Inter', sans-serif;
+            font-weight: 700;
+            font-size: 0.82rem;
+            color: var(--primary-deep);
+            line-height: 1.2;
+            margin-bottom: 2px;
+            letter-spacing: 0.1px;
+        }
+
+        .organiser-role {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.65rem;
+            font-weight: 600;
+            color: var(--accent);
+            text-transform: uppercase;
+            letter-spacing: 1.2px;
+        }
+
         /* Responsive */
         @media (max-width: 768px) {
             .hero {
@@ -850,6 +971,25 @@
             .day-header .day-count { font-size: 0.68rem; padding: 4px 10px; }
             .day-group { margin-bottom: 28px; }
 
+            .committee-band { padding: 26px 14px 28px; }
+            .committee-grid { gap: 8px; }
+            .committee-header { margin-bottom: 18px; }
+            .committee-title::before,
+            .committee-title::after { width: 12px; }
+            .committee-title::before { margin-right: 8px; }
+            .committee-title::after  { margin-left: 8px; }
+            .organiser-badge {
+                width: 46px;
+                height: 46px;
+                font-size: 1.3rem;
+                box-shadow:
+                    0 0 0 2px var(--cream),
+                    0 0 0 3px var(--accent),
+                    0 3px 10px rgba(11,46,34,0.16);
+            }
+            .organiser-name { font-size: 0.74rem; }
+            .organiser-role { font-size: 0.6rem; letter-spacing: 1px; }
+
             .section-title {
                 font-size: 1.5rem;
             }
@@ -907,6 +1047,14 @@
             .team-score { font-size: 1.75rem; min-width: 38px; }
             .match-card.upcoming .team-score { font-size: 1.5rem; }
             .team-row { padding: 8px 10px; gap: 10px; }
+
+            .committee-grid { gap: 6px; }
+            .organiser-badge {
+                width: 42px;
+                height: 42px;
+                font-size: 1.2rem;
+            }
+            .organiser-name { font-size: 0.7rem; }
         }
 
         @media (max-width: 360px) {
@@ -915,6 +1063,20 @@
             .team-cell { min-width: 105px; max-width: 120px; font-size: 0.72rem; }
             .standings-table th { font-size: 0.58rem; padding: 6px 3px; }
             .standings-table td { padding: 6px 3px; font-size: 0.74rem; }
+
+            .committee-band { padding: 22px 14px 24px; }
+            .committee-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 18px 12px;
+            }
+            .organiser-badge {
+                width: 48px;
+                height: 48px;
+                font-size: 1.4rem;
+            }
+            .organiser-name { font-size: 0.78rem; }
+            .organiser-role { font-size: 0.6rem; letter-spacing: 0.9px; }
+            .committee-title::before, .committee-title::after { display: none; }
         }
     </style>
 </head>
@@ -961,9 +1123,6 @@
                 <h1>Shuttle Championship <span class="year">2026</span></h1>
                 <p class="location">Nanjangud · Teachers Layout</p>
                 <p class="subtitle">Weekend Badminton Tournament</p>
-                <p class="organizers">
-                    🎙️ Organized by: <strong>Shivkumar Sir</strong>, <strong>Nagabhushan Sir</strong> &amp; <strong>Kashi Rao</strong>
-                </p>
 
                 <!-- Tournament Tab Switcher -->
                 <div class="tab-switcher" role="tablist">
@@ -992,6 +1151,38 @@
                 <div class="last-updated">
                     <span>⏱️ Last updated: <span id="lastUpdated">Loading...</span></span>
                     <button class="mini-refresh" onclick="loadData()" aria-label="Refresh" title="Refresh scores">↻</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Organising Committee Band -->
+        <div class="committee-band">
+            <div class="committee-inner">
+                <div class="committee-header">
+                    <span class="committee-icon">🎙️</span>
+                    <span class="committee-title">Organising Committee</span>
+                </div>
+                <div class="committee-grid">
+                    <div class="organiser">
+                        <div class="organiser-badge"><span>S</span></div>
+                        <div class="organiser-name">Shivkumar Sir</div>
+                        <div class="organiser-role">Organiser</div>
+                    </div>
+                    <div class="organiser">
+                        <div class="organiser-badge"><span>N</span></div>
+                        <div class="organiser-name">Nagabhushan Sir</div>
+                        <div class="organiser-role">Organiser</div>
+                    </div>
+                    <div class="organiser">
+                        <div class="organiser-badge"><span>K</span></div>
+                        <div class="organiser-name">Kashi Rao Sir</div>
+                        <div class="organiser-role">Organiser</div>
+                    </div>
+                    <div class="organiser">
+                        <div class="organiser-badge"><span>M</span></div>
+                        <div class="organiser-name">Manu Sir</div>
+                        <div class="organiser-role">Organiser</div>
+                    </div>
                 </div>
             </div>
         </div>
