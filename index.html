@@ -136,8 +136,8 @@
         .tournament-logo {
             width: 110px;
             height: 110px;
-            margin: 0 auto 20px;
-            filter: drop-shadow(0 6px 16px rgba(0,0,0,0.35));
+            margin: 0 auto 24px;
+            filter: drop-shadow(0 6px 18px rgba(0,0,0,0.4));
             animation: logoFloat 4s ease-in-out infinite;
         }
 
@@ -150,12 +150,12 @@
 
         .hero h1 {
             font-family: 'Playfair Display', Georgia, serif;
-            font-size: clamp(1.25rem, 5.2vw, 3.2rem);
+            font-size: clamp(1.4rem, 5.4vw, 3.2rem);
             font-weight: 900;
-            letter-spacing: 0.5px;
-            margin-bottom: 8px;
-            text-shadow: 2px 4px 12px rgba(0,0,0,0.4);
-            line-height: 1.2;
+            letter-spacing: 0.3px;
+            margin-bottom: 14px;
+            text-shadow: 2px 4px 14px rgba(0,0,0,0.45);
+            line-height: 1.15;
             padding: 0 8px;
             word-wrap: break-word;
             overflow-wrap: break-word;
@@ -163,38 +163,42 @@
         }
 
         .hero h1 .year {
-            background: linear-gradient(135deg, var(--accent-light), var(--accent));
-            -webkit-background-clip: text;
-            background-clip: text;
-            -webkit-text-fill-color: transparent;
-            font-style: italic;
+            color: var(--accent-light);
+            font-weight: 900;
         }
 
         .hero .location {
             font-family: 'Inter', sans-serif;
             font-size: clamp(0.78rem, 2.3vw, 1.25rem);
             opacity: 0.96;
-            font-weight: 500;
-            letter-spacing: 1.5px;
+            font-weight: 600;
+            letter-spacing: 2px;
             text-transform: uppercase;
-            margin-bottom: 6px;
+            margin-bottom: 10px;
             color: var(--accent-light);
             padding: 0 12px;
         }
 
         .hero .subtitle {
             font-size: clamp(0.9rem, 2.3vw, 1.05rem);
-            opacity: 0.85;
+            opacity: 0.78;
             font-weight: 400;
+            margin-bottom: 6px;
         }
 
         .hero .organizers {
-            margin-top: 10px;
+            margin-top: 18px;
+            padding-top: 18px;
+            border-top: 1px solid rgba(212,175,55,0.25);
             font-size: clamp(0.78rem, 2vw, 1rem);
             opacity: 0.92;
             font-weight: 400;
-            padding: 0 12px;
-            line-height: 1.5;
+            padding-left: 14px;
+            padding-right: 14px;
+            line-height: 1.65;
+            max-width: 480px;
+            margin-left: auto;
+            margin-right: auto;
         }
 
         .hero .organizers strong {
@@ -206,13 +210,14 @@
         .tab-switcher {
             display: inline-flex;
             gap: 6px;
-            background: rgba(0,0,0,0.3);
+            background: rgba(0,0,0,0.35);
             padding: 5px;
             border-radius: 50px;
-            margin: 22px 0 18px;
-            border: 1.5px solid rgba(212,175,55,0.4);
+            margin: 26px 0 22px;
+            border: 1.5px solid rgba(212,175,55,0.45);
             backdrop-filter: blur(8px);
             max-width: 95%;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.18);
         }
 
         .tab-btn {
@@ -247,7 +252,7 @@
             display: flex;
             justify-content: center;
             gap: 10px;
-            margin-top: 14px;
+            margin-top: 18px;
             flex-wrap: wrap;
             padding: 0 8px;
         }
@@ -273,14 +278,40 @@
         }
 
         .last-updated {
-            background: rgba(212,175,55,0.15);
-            border: 1px solid rgba(212,175,55,0.35);
-            padding: 8px 16px;
-            border-radius: 20px;
-            font-size: 0.82rem;
-            margin-top: 18px;
-            display: inline-block;
+            background: rgba(212,175,55,0.13);
+            border: 1px solid rgba(212,175,55,0.32);
+            padding: 7px 14px 7px 14px;
+            border-radius: 50px;
+            font-size: 0.78rem;
+            margin-top: 22px;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
             color: var(--accent-light);
+            font-weight: 500;
+        }
+
+        .last-updated .mini-refresh {
+            background: rgba(212,175,55,0.25);
+            border: 1px solid rgba(212,175,55,0.45);
+            color: var(--accent-light);
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.25s;
+            font-size: 0.85rem;
+            line-height: 1;
+            padding: 0;
+        }
+
+        .last-updated .mini-refresh:hover {
+            background: var(--accent);
+            color: var(--dark);
+            transform: rotate(180deg);
         }
         
         /* Main Content */
@@ -289,7 +320,7 @@
             min-height: 100vh;
             position: relative;
             z-index: 1;
-            padding-bottom: 80px;
+            padding-bottom: 40px;
         }
 
         .section {
@@ -414,17 +445,17 @@
         /* Day groups */
         .day-group {
             max-width: 1200px;
-            margin: 0 auto 30px;
+            margin: 0 auto 36px;
         }
         .day-group:last-child { margin-bottom: 0; }
 
         .day-header {
             font-family: 'Playfair Display', Georgia, serif;
-            font-size: 1.3rem;
+            font-size: 1.35rem;
             font-weight: 900;
             color: var(--primary-deep);
-            margin: 0 0 14px;
-            padding: 8px 4px 8px 16px;
+            margin: 0 0 16px;
+            padding: 10px 4px 10px 18px;
             border-left: 4px solid var(--accent);
             letter-spacing: 0.5px;
             display: flex;
@@ -435,139 +466,178 @@
 
         .day-header .day-count {
             font-family: 'Inter', sans-serif;
-            font-size: 0.78rem;
-            font-weight: 600;
+            font-size: 0.75rem;
+            font-weight: 700;
             color: var(--primary-deep);
-            background: rgba(212,175,55,0.18);
-            padding: 4px 12px;
+            background: linear-gradient(135deg, var(--accent-light), var(--accent));
+            padding: 5px 13px;
             border-radius: 50px;
-            border: 1px solid rgba(212,175,55,0.4);
+            box-shadow: 0 2px 6px rgba(212,175,55,0.35);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
         }
 
         .schedule-grid {
             display: grid;
             grid-template-columns: 1fr;
-            gap: 14px;
+            gap: 12px;
         }
 
+        /* Modern sports-app match card */
         .match-card {
-            background: white;
-            border-radius: 12px;
+            background: #fff;
+            border-radius: 16px;
             overflow: hidden;
-            box-shadow: 0 3px 12px rgba(0,0,0,0.06);
-            transition: all 0.25s ease;
-            border: 1px solid rgba(212,175,55,0.15);
+            box-shadow:
+                0 1px 2px rgba(11,46,34,0.04),
+                0 8px 24px rgba(11,46,34,0.08);
+            transition: transform 0.25s ease, box-shadow 0.25s ease;
+            border: 1px solid rgba(11,46,34,0.06);
+            position: relative;
         }
 
-        .match-card.completed { border-left: 3px solid var(--primary); }
-        .match-card.upcoming  { border-left: 3px solid rgba(212,175,55,0.5); }
+        .match-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 3px;
+            background: var(--primary);
+        }
+
+        .match-card.upcoming::before {
+            background: linear-gradient(90deg, var(--accent-light), var(--accent));
+            opacity: 0.7;
+        }
 
         .match-card:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 10px 24px rgba(11,110,79,0.15);
-            border-color: rgba(212,175,55,0.45);
+            transform: translateY(-2px);
+            box-shadow:
+                0 1px 2px rgba(11,46,34,0.04),
+                0 14px 32px rgba(11,46,34,0.14);
         }
 
-        .match-header {
-            background: linear-gradient(135deg, var(--primary-deep), var(--primary));
-            color: white;
-            padding: 9px 14px;
-            font-family: 'Inter', sans-serif;
-            font-weight: 600;
-            letter-spacing: 0.3px;
+        .match-meta {
             display: flex;
-            justify-content: space-between;
             align-items: center;
-            border-bottom: 1.5px solid var(--accent);
-            font-size: 0.85rem;
+            justify-content: space-between;
+            padding: 12px 16px 8px;
+            gap: 8px;
         }
 
-        .match-number {
-            opacity: 0.92;
+        .match-number-chip {
+            font-family: 'Inter', sans-serif;
+            font-weight: 700;
+            font-size: 0.72rem;
+            color: #6B7570;
+            letter-spacing: 1.2px;
+            text-transform: uppercase;
         }
 
         .match-status {
-            font-size: 0.72rem;
-            padding: 3px 10px;
+            font-size: 0.66rem;
+            padding: 4px 11px;
             border-radius: 50px;
-            background: rgba(255,255,255,0.18);
-            font-weight: 600;
-            letter-spacing: 0.3px;
+            background: rgba(11,110,79,0.08);
+            color: var(--primary-deep);
+            font-weight: 700;
+            letter-spacing: 0.6px;
+            text-transform: uppercase;
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
         }
 
         .match-status.completed {
-            background: var(--accent);
-            color: var(--dark);
+            background: rgba(11,110,79,0.1);
+            color: var(--primary-deep);
+        }
+
+        .match-status.live {
+            background: rgba(230,57,70,0.1);
+            color: #C42836;
+            animation: pulse 1.6s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%,100% { opacity: 1; }
+            50%     { opacity: 0.6; }
         }
 
         .match-body {
-            padding: 10px 14px 12px;
+            padding: 4px 16px 16px;
         }
 
         .team-row {
             display: grid;
             grid-template-columns: 1fr auto;
             align-items: center;
-            gap: 12px;
-            padding: 8px 0;
+            gap: 14px;
+            padding: 10px 12px;
+            border-radius: 10px;
+            transition: background 0.2s;
         }
 
-        .team-row + .team-row {
-            border-top: 1px dashed rgba(11,110,79,0.18);
+        .team-row + .team-row { margin-top: 4px; }
+
+        .team-row.winner {
+            background: linear-gradient(90deg,
+                rgba(212,175,55,0.16) 0%,
+                rgba(212,175,55,0.04) 100%);
+            box-shadow: inset 3px 0 0 var(--accent);
         }
 
-        .team-info {
-            min-width: 0;
-        }
+        .team-info { min-width: 0; }
 
         .team-name {
             font-family: 'Inter', sans-serif;
             font-weight: 700;
-            font-size: 0.95rem;
+            font-size: 0.98rem;
             color: var(--dark);
             line-height: 1.2;
             word-wrap: break-word;
             overflow-wrap: break-word;
             display: flex;
             align-items: center;
-            gap: 6px;
+            gap: 7px;
+            letter-spacing: -0.1px;
         }
 
         .team-name .winner-mark {
-            display: inline-block;
-            font-size: 0.95rem;
+            font-size: 1rem;
+            filter: drop-shadow(0 1px 2px rgba(212,175,55,0.4));
         }
 
         .team-players {
-            font-size: 0.72rem;
-            color: #7A857F;
+            font-size: 0.76rem;
+            color: #828A86;
             font-weight: 500;
-            margin-top: 3px;
-            line-height: 1.3;
-        }
-
-        .team-score {
-            font-family: 'Playfair Display', Georgia, serif;
-            font-size: 1.9rem;
-            font-weight: 900;
-            color: #B0B5B2;
-            line-height: 1;
-            min-width: 40px;
-            text-align: right;
+            margin-top: 4px;
+            line-height: 1.35;
+            letter-spacing: 0.1px;
         }
 
         .team-row.winner .team-name { color: var(--primary-deep); }
-        .team-row.winner .team-score { color: var(--primary); }
-        .team-row.winner {
-            background: linear-gradient(90deg, rgba(212,175,55,0.07), transparent);
-            margin: 0 -14px;
-            padding-left: 14px;
-            padding-right: 14px;
+        .team-row.winner .team-players { color: #5B6862; }
+
+        .team-score {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: 2.1rem;
+            font-weight: 900;
+            color: #C5CAC8;
+            line-height: 1;
+            min-width: 44px;
+            text-align: right;
+            letter-spacing: -1px;
+        }
+
+        .team-row.winner .team-score {
+            color: var(--primary);
+            text-shadow: 0 1px 0 rgba(212,175,55,0.25);
         }
 
         .match-card.upcoming .team-score {
-            color: #C8CDCB;
-            font-size: 1.6rem;
+            color: #D8DDDB;
+            font-size: 1.8rem;
         }
         
         /* Knockout Bracket */
@@ -763,14 +833,22 @@
                 padding: 8px 14px;
             }
 
-            .match-body { padding: 10px 14px 12px; }
+            .match-body { padding: 4px 12px 14px; }
+            .match-meta { padding: 11px 14px 6px; }
 
-            .team-name { font-size: 0.9rem; }
-            .team-players { font-size: 0.7rem; }
-            .team-score { font-size: 1.7rem; }
+            .team-row { padding: 9px 10px; }
+            .team-name { font-size: 0.92rem; }
+            .team-players { font-size: 0.74rem; margin-top: 3px; }
+            .team-score { font-size: 1.9rem; min-width: 40px; }
+            .match-card.upcoming .team-score { font-size: 1.6rem; }
 
-            .day-header { font-size: 1.1rem; padding: 6px 4px 6px 12px; }
-            .day-header .day-count { font-size: 0.7rem; padding: 3px 9px; }
+            .day-header {
+                font-size: 1.15rem;
+                padding: 8px 4px 8px 14px;
+                margin: 0 0 12px;
+            }
+            .day-header .day-count { font-size: 0.68rem; padding: 4px 10px; }
+            .day-group { margin-bottom: 28px; }
 
             .section-title {
                 font-size: 1.5rem;
@@ -793,15 +871,15 @@
         }
 
         @media (max-width: 480px) {
-            .hero { padding: 24px 10px 26px; }
+            .hero { padding: 28px 10px 30px; }
 
             .tournament-logo {
-                width: 70px;
-                height: 70px;
-                margin-bottom: 10px;
+                width: 82px;
+                height: 82px;
+                margin-bottom: 16px;
             }
 
-            .hero .location { letter-spacing: 1px; }
+            .hero .location { letter-spacing: 1.5px; }
 
             .standings-table th {
                 padding: 8px 4px;
@@ -819,25 +897,16 @@
                 font-size: 0.76rem;
             }
 
-            .section-title {
-                font-size: 1.3rem;
-            }
+            .section-title { font-size: 1.4rem; }
 
-            .tab-btn {
-                padding: 9px 14px;
-            }
+            .tab-btn { padding: 9px 16px; }
+            .info-badge { padding: 7px 12px; }
 
-            .info-badge {
-                padding: 7px 12px;
-            }
-
-            .team-name {
-                font-size: 0.76rem;
-            }
-
-            .team-score {
-                font-size: 1.6rem;
-            }
+            .team-name { font-size: 0.9rem; }
+            .team-players { font-size: 0.72rem; }
+            .team-score { font-size: 1.75rem; min-width: 38px; }
+            .match-card.upcoming .team-score { font-size: 1.5rem; }
+            .team-row { padding: 8px 10px; gap: 10px; }
         }
 
         @media (max-width: 360px) {
@@ -921,7 +990,8 @@
                     </a>
                 </div>
                 <div class="last-updated">
-                    ⏱️ Last updated: <span id="lastUpdated">Loading...</span>
+                    <span>⏱️ Last updated: <span id="lastUpdated">Loading...</span></span>
+                    <button class="mini-refresh" onclick="loadData()" aria-label="Refresh" title="Refresh scores">↻</button>
                 </div>
             </div>
         </div>
@@ -1020,7 +1090,6 @@
         </div>
 
         <!-- Refresh Button -->
-        <button class="refresh-btn" onclick="loadData()">🔄 Refresh</button>
     </div>
 
     <script>
@@ -1330,13 +1399,13 @@
                 const w1 = m.completed && m.score1 > m.score2;
                 const w2 = m.completed && m.score2 > m.score1;
                 const cardClass = m.completed ? 'completed' : 'upcoming';
+                const statusLabel = m.completed ? 'Completed' : 'Upcoming';
+                const statusClass = m.completed ? 'completed' : '';
                 return `
                     <div class="match-card ${cardClass}">
-                        <div class="match-header">
-                            <span class="match-number">Match #${m.id}</span>
-                            <span class="match-status ${m.completed ? 'completed' : ''}">
-                                ${m.completed ? '✓ Completed' : '⏳ Upcoming'}
-                            </span>
+                        <div class="match-meta">
+                            <span class="match-number-chip">Match · #${m.id}</span>
+                            <span class="match-status ${statusClass}">${statusLabel}</span>
                         </div>
                         <div class="match-body">
                             ${renderRow(m.team1, m.score1, w1, m.completed)}
