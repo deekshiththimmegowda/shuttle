@@ -540,14 +540,15 @@
                         <table class="standings-table">
                             <thead>
                                 <tr>
-                                    <th>Rank</th>
+                                    <th>Pos</th>
                                     <th>Team</th>
-                                    <th>P</th>
+                                    <th>M</th>
                                     <th>W</th>
                                     <th>L</th>
-                                    <th>PF</th>
-                                    <th>PA</th>
-                                    <th>Diff</th>
+                                    <th>NR</th>
+                                    <th>NRR</th>
+                                    <th>For</th>
+                                    <th>Against</th>
                                     <th>Pts</th>
                                 </tr>
                             </thead>
@@ -767,9 +768,11 @@
                     played: 0,
                     won: 0,
                     lost: 0,
+                    noResult: 0,
                     pointsFor: 0,
                     pointsAgainst: 0,
                     diff: 0,
+                    nrr: 0,
                     points: 0
                 };
             });
@@ -796,6 +799,10 @@
                     standings[match.team2].diff = standings[match.team2].pointsFor - standings[match.team2].pointsAgainst;
                     standings[match.team1].points = standings[match.team1].won * 2;
                     standings[match.team2].points = standings[match.team2].won * 2;
+                    standings[match.team1].nrr = standings[match.team1].played > 0
+                        ? standings[match.team1].diff / standings[match.team1].played : 0;
+                    standings[match.team2].nrr = standings[match.team2].played > 0
+                        ? standings[match.team2].diff / standings[match.team2].played : 0;
                 }
             });
         }
@@ -803,7 +810,7 @@
         function renderStandings() {
             const sortedTeams = Object.entries(standings).sort((a, b) => {
                 if (b[1].points !== a[1].points) return b[1].points - a[1].points;
-                if (b[1].diff !== a[1].diff) return b[1].diff - a[1].diff;
+                if (b[1].nrr !== a[1].nrr) return b[1].nrr - a[1].nrr;
                 return b[1].pointsFor - a[1].pointsFor;
             });
             
@@ -815,11 +822,12 @@
                     <td>${stats.played}</td>
                     <td>${stats.won}</td>
                     <td>${stats.lost}</td>
+                    <td>${stats.noResult}</td>
+                    <td style="font-weight: 700; color: ${stats.nrr >= 0 ? '#06D6A0' : '#E63946'};">
+                        ${stats.nrr > 0 ? '+' : ''}${stats.nrr.toFixed(3)}
+                    </td>
                     <td>${stats.pointsFor}</td>
                     <td>${stats.pointsAgainst}</td>
-                    <td style="font-weight: 700; color: ${stats.diff >= 0 ? '#06D6A0' : '#E63946'};">
-                        ${stats.diff > 0 ? '+' : ''}${stats.diff}
-                    </td>
                     <td style="font-weight: 800; color: #FFD166;">${stats.points}</td>
                 </tr>
             `).join('');
