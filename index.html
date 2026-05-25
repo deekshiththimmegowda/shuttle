@@ -1149,8 +1149,8 @@
                     <a href="#schedule" style="text-decoration: none; color: inherit;">
                         <div class="info-badge">🎯 <span id="matchCount">21</span> Matches</div>
                     </a>
-                    <a href="#knockouts" style="text-decoration: none; color: inherit;">
-                        <div class="info-badge">🏆 Top 4 to Semifinals</div>
+                    <a id="qualifyLink" href="#knockouts" style="text-decoration: none; color: inherit;">
+                        <div class="info-badge"><span id="qualifyLabel">🏆 Top 4 to Semifinals</span></div>
                     </a>
                 </div>
                 <div class="last-updated">
@@ -1393,50 +1393,64 @@
                         { id: 12, team1: "THUNDER SMASH", team2: "NIMAY NINJAS", time: "7:50 AM", day: "Saturday", score1: 15, score2: 4, completed: true },
                         { id: 13, team1: "SKATE MASTERS", team2: "HACK ATTACK", time: "8:00 AM", day: "Saturday", score1: 16, score2: 14, completed: true },
                         { id: 14, team1: "SKATE MASTERS", team2: "NIMAY NINJAS", time: "8:10 AM", day: "Saturday", score1: 14, score2: 3, completed: true },
-                        { id: 15, team1: "HACK ATTACK", team2: "NIMAY NINJAS", time: "8:20 AM", day: "Saturday", score1: null, score2: null, completed: false },
-                        
-                        // SUNDAY MATCHES (Team Aarya available)
-                        { id: 16, team1: "AARYA ACES", team2: "THUNDER SMASH", time: "6:00 AM", day: "Sunday", score1: null, score2: null, completed: false },
-                        { id: 17, team1: "AARYA ACES", team2: "SKATE MASTERS", time: "6:10 AM", day: "Sunday", score1: null, score2: null, completed: false },
-                        { id: 18, team1: "AARYA ACES", team2: "HACK ATTACK", time: "6:20 AM", day: "Sunday", score1: null, score2: null, completed: false },
-                        { id: 19, team1: "AARYA ACES", team2: "NIMAY NINJAS", time: "6:30 AM", day: "Sunday", score1: null, score2: null, completed: false },
-                        
-                        // NEXT SATURDAY (Remaining matches)
-                        { id: 20, team1: "AARYA ACES", team2: "ROARING LIONS", time: "6:00 AM", day: "Next Saturday", score1: null, score2: null, completed: false },
-                        { id: 21, team1: "AARYA ACES", team2: "RUCHUSMITHA ROCKETS", time: "6:10 AM", day: "Next Saturday", score1: null, score2: null, completed: false }
+
+                        // TOMORROW (Aarya's matches)
+                        { id: 16, team1: "AARYA ACES", team2: "THUNDER SMASH", time: "6:00 AM", day: "Tomorrow", score1: null, score2: null, completed: false },
+                        { id: 17, team1: "AARYA ACES", team2: "SKATE MASTERS", time: "6:10 AM", day: "Tomorrow", score1: null, score2: null, completed: false },
+                        { id: 18, team1: "AARYA ACES", team2: "HACK ATTACK", time: "6:20 AM", day: "Tomorrow", score1: null, score2: null, completed: false }
                     ]
                 };
 
-                // SENIORS TOURNAMENT — placeholder data
+                // SENIORS TOURNAMENT — 3 teams, double round-robin (IPL-style), 6 matches
                 allTournaments.seniors = {
                     label: 'Seniors',
-                    dateLabel: 'May 30-31',
+                    dateLabel: 'Tomorrow',
                     teams: {
-                        "TEAM A": { player1: "TBA", player2: "TBA" },
-                        "TEAM B": { player1: "TBA", player2: "TBA" },
-                        "TEAM C": { player1: "TBA", player2: "TBA" },
-                        "TEAM D": { player1: "TBA", player2: "TBA" }
+                        "KASHI RAO & SATISH":      { player1: "Kashi Rao",   player2: "Satish" },
+                        "NAGABHUSHAN & SHIVKUMAR": { player1: "Nagabhushan", player2: "Shivkumar" },
+                        "DEEKSHITH & MANU":        { player1: "Deekshith",   player2: "Manu" }
                     },
                     matches: [
-                        { id: 1, team1: "TEAM A", team2: "TEAM B", time: "6:00 AM", day: "Next Saturday", score1: null, score2: null, completed: false },
-                        { id: 2, team1: "TEAM A", team2: "TEAM C", time: "6:30 AM", day: "Next Saturday", score1: null, score2: null, completed: false },
-                        { id: 3, team1: "TEAM A", team2: "TEAM D", time: "7:00 AM", day: "Next Saturday", score1: null, score2: null, completed: false },
-                        { id: 4, team1: "TEAM B", team2: "TEAM C", time: "7:30 AM", day: "Next Saturday", score1: null, score2: null, completed: false },
-                        { id: 5, team1: "TEAM B", team2: "TEAM D", time: "8:00 AM", day: "Next Saturday", score1: null, score2: null, completed: false },
-                        { id: 6, team1: "TEAM C", team2: "TEAM D", time: "8:30 AM", day: "Next Saturday", score1: null, score2: null, completed: false }
+                        // ROUND 1 — Tomorrow
+                        { id: 1, team1: "KASHI RAO & SATISH",      team2: "NAGABHUSHAN & SHIVKUMAR", time: "6:00 AM", day: "Tomorrow", score1: null, score2: null, completed: false },
+                        { id: 2, team1: "KASHI RAO & SATISH",      team2: "DEEKSHITH & MANU",        time: "6:30 AM", day: "Tomorrow", score1: null, score2: null, completed: false },
+                        { id: 3, team1: "NAGABHUSHAN & SHIVKUMAR", team2: "DEEKSHITH & MANU",        time: "7:00 AM", day: "Tomorrow", score1: null, score2: null, completed: false },
+                        // ROUND 2 — TBD
+                        { id: 4, team1: "KASHI RAO & SATISH",      team2: "NAGABHUSHAN & SHIVKUMAR", time: "TBA",    day: "Round 2", score1: null, score2: null, completed: false },
+                        { id: 5, team1: "KASHI RAO & SATISH",      team2: "DEEKSHITH & MANU",        time: "TBA",    day: "Round 2", score1: null, score2: null, completed: false },
+                        { id: 6, team1: "NAGABHUSHAN & SHIVKUMAR", team2: "DEEKSHITH & MANU",        time: "TBA",    day: "Round 2", score1: null, score2: null, completed: false }
                     ]
                 };
 
                 // Activate the current tournament
                 tournamentData = allTournaments[currentTournament];
 
-                // Update header counts
-                document.getElementById('teamCount').textContent = Object.keys(tournamentData.teams).length;
-                document.getElementById('matchCount').textContent = tournamentData.matches.length;
-                document.getElementById('dateLabel').textContent = tournamentData.dateLabel;
+                applyTournamentChrome();
 
                 resolve();
             });
+        }
+
+        function applyTournamentChrome() {
+            // Header counts
+            document.getElementById('teamCount').textContent = Object.keys(tournamentData.teams).length;
+            document.getElementById('matchCount').textContent = tournamentData.matches.length;
+            document.getElementById('dateLabel').textContent = tournamentData.dateLabel;
+
+            // Qualification badge + knockout visibility depend on tournament size
+            const isSeniors = currentTournament === 'seniors';
+            const qualifyLabel = document.getElementById('qualifyLabel');
+            const qualifyLink  = document.getElementById('qualifyLink');
+            const knockoutsSection = document.getElementById('knockouts');
+            if (isSeniors) {
+                qualifyLabel.textContent = '🏆 Winner by Standings';
+                qualifyLink.setAttribute('href', '#standings');
+                if (knockoutsSection) knockoutsSection.style.display = 'none';
+            } else {
+                qualifyLabel.textContent = '🏆 Top 4 to Semifinals';
+                qualifyLink.setAttribute('href', '#knockouts');
+                if (knockoutsSection) knockoutsSection.style.display = '';
+            }
         }
 
         // Tab switching with fade-slide animation
@@ -1452,10 +1466,7 @@
                 btn.setAttribute('aria-selected', isActive ? 'true' : 'false');
             });
 
-            // Update header counts
-            document.getElementById('teamCount').textContent = Object.keys(tournamentData.teams).length;
-            document.getElementById('matchCount').textContent = tournamentData.matches.length;
-            document.getElementById('dateLabel').textContent = tournamentData.dateLabel;
+            applyTournamentChrome();
 
             // Animate content swap
             const sections = document.querySelectorAll('.tab-content');
@@ -1538,9 +1549,10 @@
             const tbody = document.getElementById('standingsBody');
             const hasMatchesPlayed = sortedTeams.some(([_, s]) => s.played > 0);
 
+            const qualifyTop = currentTournament === 'seniors' ? 1 : 4;
             tbody.innerHTML = sortedTeams.map(([team, stats], idx) => {
                 const isTop = idx === 0 && hasMatchesPlayed && stats.points > 0;
-                const rowClass = (idx < 4 ? 'qualified-row' : '') + (isTop ? ' rank-1' : '');
+                const rowClass = (idx < qualifyTop ? 'qualified-row' : '') + (isTop ? ' rank-1' : '');
                 return `
                 <tr class="${rowClass}">
                     <td class="rank-cell">${idx + 1}</td>
@@ -1575,6 +1587,8 @@
             const playerLine = (teamName) => {
                 const t = tournamentData.teams[teamName];
                 if (!t) return '';
+                // Seniors teams use player pair as team name — skip duplicate sub-line
+                if (currentTournament === 'seniors') return '';
                 if (t.player1 === 'TBA' && t.player2 === 'TBA') return '<div class="team-players">Players TBA</div>';
                 return `<div class="team-players">${t.player1} &middot; ${t.player2}</div>`;
             };
