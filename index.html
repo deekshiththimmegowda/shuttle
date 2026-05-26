@@ -647,79 +647,166 @@
         
         /* Knockout Bracket */
         .bracket-container {
-            max-width: 1000px;
+            max-width: 1100px;
             margin: 0 auto;
-            padding: 20px;
+            padding: 26px;
             background: white;
             border-radius: 20px;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+            box-shadow: 0 12px 36px rgba(11,46,34,0.12);
+            border: 1px solid rgba(212,175,55,0.2);
         }
-        
+
         .bracket-note {
             text-align: center;
-            color: #666;
-            font-size: 1.1rem;
-            margin-bottom: 30px;
-            padding: 15px;
-            background: #FFF9E6;
-            border-radius: 10px;
-            border-left: 5px solid var(--accent);
+            color: var(--primary-deep);
+            font-size: 0.92rem;
+            font-weight: 600;
+            margin-bottom: 28px;
+            padding: 12px 18px;
+            background: linear-gradient(135deg, rgba(212,175,55,0.12), rgba(212,175,55,0.04));
+            border-radius: 50px;
+            border: 1px solid rgba(212,175,55,0.35);
+            display: inline-block;
+            width: auto;
+            margin-left: auto;
+            margin-right: auto;
+            letter-spacing: 0.3px;
         }
-        
-        .bracket-grid {
+        .bracket-container > .bracket-note { display: block; text-align: center; }
+
+        .playoff-stages {
             display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 50px;
-            margin-bottom: 50px;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 18px;
+            margin-bottom: 30px;
         }
-        
+
         .bracket-match {
-            background: var(--light);
-            border-radius: 12px;
-            padding: 25px;
-            border: 2px solid #E0E0E0;
+            background: linear-gradient(180deg, #FFFFFF 0%, #FAF7F0 100%);
+            border-radius: 14px;
+            padding: 18px 16px;
+            border: 1.5px solid rgba(11,46,34,0.08);
+            box-shadow: 0 4px 12px rgba(11,46,34,0.06);
+            transition: transform 0.25s, box-shadow 0.25s;
         }
-        
+
+        .bracket-match:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(11,46,34,0.12);
+        }
+
         .bracket-match h4 {
-            font-family: 'Oswald', sans-serif;
+            font-family: 'Inter', sans-serif;
             text-align: center;
-            color: var(--secondary);
-            font-size: 1.3rem;
-            margin-bottom: 20px;
+            color: var(--primary-deep);
+            font-size: 0.9rem;
+            font-weight: 800;
+            margin-bottom: 14px;
             text-transform: uppercase;
             letter-spacing: 1px;
+            line-height: 1.3;
         }
-        
+
+        .bracket-route {
+            display: block;
+            margin-top: 4px;
+            font-size: 0.62rem;
+            font-weight: 600;
+            color: var(--accent);
+            letter-spacing: 0.6px;
+        }
+
         .bracket-team {
-            display: flex;
-            justify-content: space-between;
+            display: grid;
+            grid-template-columns: auto 1fr auto;
             align-items: center;
-            padding: 15px;
-            margin: 10px 0;
+            gap: 10px;
+            padding: 10px 12px;
+            margin: 6px 0;
             background: white;
-            border-radius: 8px;
-            border: 2px solid transparent;
-            transition: all 0.3s;
+            border-radius: 10px;
+            border: 1px solid rgba(11,46,34,0.06);
+            transition: background 0.2s;
         }
-        
-        .bracket-team:hover {
-            border-color: var(--accent);
-            transform: translateX(5px);
+
+        .bracket-rank {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-weight: 900;
+            font-size: 0.85rem;
+            color: var(--accent);
+            background: rgba(212,175,55,0.12);
+            width: 26px;
+            height: 26px;
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            line-height: 1;
         }
-        
+
         .bracket-team-name {
+            font-family: 'Inter', sans-serif;
             font-weight: 700;
-            font-size: 1.1rem;
+            font-size: 0.9rem;
+            color: var(--dark);
+            line-height: 1.2;
+            min-width: 0;
+            word-wrap: break-word;
+            overflow-wrap: break-word;
         }
-        
+
+        .bracket-score {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-weight: 900;
+            font-size: 1.1rem;
+            color: var(--primary);
+            min-width: 24px;
+            text-align: right;
+        }
+
+        .playoff-q1 { border-top: 3px solid #FFB400; }
+        .playoff-elim { border-top: 3px solid #E63946; }
+        .playoff-q2 { border-top: 3px solid #2E86AB; }
+
         .bracket-final {
-            max-width: 500px;
+            max-width: 520px;
             margin: 0 auto;
         }
-        
+
         .bracket-final .bracket-match {
-            border: 3px solid var(--accent);
-            background: linear-gradient(135deg, rgba(241,196,15,0.05), rgba(230,57,70,0.05));
+            border: 2px solid var(--accent);
+            background: linear-gradient(135deg, rgba(212,175,55,0.12), rgba(212,175,55,0.03));
+            box-shadow: 0 8px 24px rgba(212,175,55,0.25);
+            padding: 22px 20px;
+        }
+
+        .bracket-final .bracket-match h4 {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: 1.4rem;
+            color: var(--primary-deep);
+            font-weight: 900;
+        }
+
+        .bracket-final .bracket-team {
+            background: white;
+            border: 1.5px solid rgba(212,175,55,0.3);
+        }
+
+        /* Playoff card variations in match schedule */
+        .match-card.playoff {
+            border-top: 4px solid var(--accent);
+        }
+        .match-card.playoff::before { display: none; }
+
+        .match-card.playoff .match-number-chip {
+            color: var(--accent);
+            font-weight: 800;
+        }
+
+        .team-row.placeholder .team-name {
+            color: #9AA39E;
+            font-style: italic;
+            font-weight: 600;
         }
         
         /* Refresh Button */
@@ -808,7 +895,7 @@
 
         .committee-grid {
             display: grid;
-            grid-template-columns: repeat(4, 1fr);
+            grid-template-columns: repeat(5, 1fr);
             gap: 12px;
             justify-items: center;
         }
@@ -891,6 +978,21 @@
                 grid-template-columns: 1fr;
                 gap: 30px;
             }
+
+            .playoff-stages {
+                grid-template-columns: 1fr;
+                gap: 14px;
+                margin-bottom: 22px;
+            }
+
+            .bracket-container { padding: 18px 14px; }
+            .bracket-match { padding: 14px 12px; }
+            .bracket-match h4 { font-size: 0.82rem; }
+            .bracket-team { padding: 9px 10px; gap: 8px; }
+            .bracket-team-name { font-size: 0.85rem; }
+            .bracket-score { font-size: 1rem; }
+            .bracket-rank { width: 22px; height: 22px; font-size: 0.75rem; }
+            .bracket-final .bracket-match h4 { font-size: 1.15rem; }
 
             .standings-wrapper {
                 margin: 0 -15px;
@@ -1071,16 +1173,16 @@
 
             .committee-band { padding: 22px 14px 24px; }
             .committee-grid {
-                grid-template-columns: repeat(2, 1fr);
-                gap: 18px 12px;
+                grid-template-columns: repeat(3, 1fr);
+                gap: 16px 10px;
             }
             .organiser-badge {
-                width: 48px;
-                height: 48px;
-                font-size: 1.4rem;
+                width: 44px;
+                height: 44px;
+                font-size: 1.3rem;
             }
-            .organiser-name { font-size: 0.78rem; }
-            .organiser-role { font-size: 0.6rem; letter-spacing: 0.9px; }
+            .organiser-name { font-size: 0.72rem; }
+            .organiser-role { font-size: 0.55rem; letter-spacing: 0.8px; }
             .committee-title::before, .committee-title::after { display: none; }
         }
     </style>
@@ -1184,6 +1286,11 @@
                         <div class="organiser-role">Organiser</div>
                     </div>
                     <div class="organiser">
+                        <div class="organiser-badge"><span>S</span></div>
+                        <div class="organiser-name">Satish Sir</div>
+                        <div class="organiser-role">Organiser</div>
+                    </div>
+                    <div class="organiser">
                         <div class="organiser-badge"><span>M</span></div>
                         <div class="organiser-name">Manu Sir</div>
                         <div class="organiser-role">Organiser</div>
@@ -1235,48 +1342,64 @@
             <!-- Knockout Bracket Section -->
             <div class="section tab-content" id="knockouts">
                 <div class="container">
-                    <h2 class="section-title">🏆 Knockout Stage</h2>
+                    <h2 class="section-title">🏆 Playoffs · IPL Format</h2>
                     <div class="bracket-container">
                         <div class="bracket-note">
-                            Top 4 teams from league stage advance to semifinals
+                            Top 4 teams advance · Best of 3 games (21 pts each)
                         </div>
-                        
-                        <div class="bracket-grid">
-                            <div class="bracket-match">
-                                <h4>Semifinal 1</h4>
+
+                        <div class="playoff-stages">
+                            <div class="bracket-match playoff-q1">
+                                <h4>🥇 Qualifier 1 <span class="bracket-route">Winner → Final</span></h4>
                                 <div class="bracket-team">
-                                    <span class="bracket-team-name" id="sf1Team1">Rank #1</span>
-                                    <span id="sf1Score1">-</span>
+                                    <span class="bracket-rank">#1</span>
+                                    <span class="bracket-team-name" id="q1Team1">Rank #1</span>
+                                    <span class="bracket-score" id="q1Score1">–</span>
                                 </div>
                                 <div class="bracket-team">
-                                    <span class="bracket-team-name" id="sf1Team2">Rank #4</span>
-                                    <span id="sf1Score2">-</span>
+                                    <span class="bracket-rank">#2</span>
+                                    <span class="bracket-team-name" id="q1Team2">Rank #2</span>
+                                    <span class="bracket-score" id="q1Score2">–</span>
                                 </div>
                             </div>
-                            
-                            <div class="bracket-match">
-                                <h4>Semifinal 2</h4>
+
+                            <div class="bracket-match playoff-elim">
+                                <h4>⚔️ Eliminator <span class="bracket-route">Loser → Out</span></h4>
                                 <div class="bracket-team">
-                                    <span class="bracket-team-name" id="sf2Team1">Rank #2</span>
-                                    <span id="sf2Score1">-</span>
+                                    <span class="bracket-rank">#3</span>
+                                    <span class="bracket-team-name" id="elimTeam1">Rank #3</span>
+                                    <span class="bracket-score" id="elimScore1">–</span>
                                 </div>
                                 <div class="bracket-team">
-                                    <span class="bracket-team-name" id="sf2Team2">Rank #3</span>
-                                    <span id="sf2Score2">-</span>
+                                    <span class="bracket-rank">#4</span>
+                                    <span class="bracket-team-name" id="elimTeam2">Rank #4</span>
+                                    <span class="bracket-score" id="elimScore2">–</span>
+                                </div>
+                            </div>
+
+                            <div class="bracket-match playoff-q2">
+                                <h4>🎯 Qualifier 2 <span class="bracket-route">Winner → Final</span></h4>
+                                <div class="bracket-team">
+                                    <span class="bracket-team-name" id="q2Team1">Q1 Loser</span>
+                                    <span class="bracket-score" id="q2Score1">–</span>
+                                </div>
+                                <div class="bracket-team">
+                                    <span class="bracket-team-name" id="q2Team2">Eliminator Winner</span>
+                                    <span class="bracket-score" id="q2Score2">–</span>
                                 </div>
                             </div>
                         </div>
-                        
+
                         <div class="bracket-final">
-                            <div class="bracket-match">
+                            <div class="bracket-match playoff-final">
                                 <h4>🏆 Grand Final</h4>
                                 <div class="bracket-team">
-                                    <span class="bracket-team-name" id="finalTeam1">SF1 Winner</span>
-                                    <span id="finalScore1">-</span>
+                                    <span class="bracket-team-name" id="finalTeam1">Q1 Winner</span>
+                                    <span class="bracket-score" id="finalScore1">–</span>
                                 </div>
                                 <div class="bracket-team">
-                                    <span class="bracket-team-name" id="finalTeam2">SF2 Winner</span>
-                                    <span id="finalScore2">-</span>
+                                    <span class="bracket-team-name" id="finalTeam2">Q2 Winner</span>
+                                    <span class="bracket-score" id="finalScore2">–</span>
                                 </div>
                             </div>
                         </div>
@@ -1401,7 +1524,13 @@
                         { id: 18, team1: "AARYA ACES", team2: "HACK ATTACK",         time: "6:20 AM", day: "Sunday", score1: 8,  score2: 15, completed: true },
                         { id: 19, team1: "AARYA ACES", team2: "NIMAY NINJAS",        time: "6:30 AM", day: "Sunday", score1: 15, score2: 11, completed: true },
                         { id: 20, team1: "AARYA ACES", team2: "ROARING LIONS",       time: "6:40 AM", day: "Sunday", score1: 12, score2: 15, completed: true },
-                        { id: 21, team1: "AARYA ACES", team2: "RUCHUSMITHA ROCKETS", time: "6:50 AM", day: "Sunday", score1: 16, score2: 14, completed: true }
+                        { id: 21, team1: "AARYA ACES", team2: "RUCHUSMITHA ROCKETS", time: "6:50 AM", day: "Sunday", score1: 16, score2: 14, completed: true },
+
+                        // PLAYOFFS — Thursday (IPL format, best of 3 games of 21 pts; score shown as games won)
+                        { id: 22, team1: null, team2: null, time: "TBA", day: "Thursday — Playoffs", score1: null, score2: null, completed: false, stage: "Qualifier 1", slot1: "rank1", slot2: "rank2", placeholder1: "Rank #1", placeholder2: "Rank #2" },
+                        { id: 23, team1: null, team2: null, time: "TBA", day: "Thursday — Playoffs", score1: null, score2: null, completed: false, stage: "Eliminator", slot1: "rank3", slot2: "rank4", placeholder1: "Rank #3", placeholder2: "Rank #4" },
+                        { id: 24, team1: null, team2: null, time: "TBA", day: "Thursday — Playoffs", score1: null, score2: null, completed: false, stage: "Qualifier 2", slot1: "q1_loser", slot2: "eliminator_winner", placeholder1: "Q1 Loser", placeholder2: "Eliminator Winner" },
+                        { id: 25, team1: null, team2: null, time: "TBA", day: "Thursday — Playoffs", score1: null, score2: null, completed: false, stage: "Grand Final", slot1: "q1_winner", slot2: "q2_winner", placeholder1: "Q1 Winner", placeholder2: "Q2 Winner" }
                     ]
                 };
 
@@ -1577,8 +1706,67 @@
             updateKnockouts(sortedTeams);
         }
         
+        function resolvePlayoffSlots(sortedTeams) {
+            // Build a lookup for placeholder slots based on current standings + earlier playoff results
+            const top4 = (sortedTeams || []).slice(0, 4).map(([name]) => name);
+            const slots = {
+                rank1: top4[0] || null,
+                rank2: top4[1] || null,
+                rank3: top4[2] || null,
+                rank4: top4[3] || null
+            };
+            const matchById = {};
+            tournamentData.matches.forEach(m => { if (m.id) matchById[m.id] = m; });
+
+            const resolved = (slotKey) => {
+                if (slots[slotKey]) return slots[slotKey];
+                // Derived slots: q1_loser, q1_winner, eliminator_winner, q2_winner
+                if (slotKey === 'q1_loser' || slotKey === 'q1_winner') {
+                    const q1 = matchById[22];
+                    if (q1 && q1.completed && q1.team1 && q1.team2) {
+                        const w = q1.score1 > q1.score2 ? q1.team1 : q1.team2;
+                        const l = q1.score1 > q1.score2 ? q1.team2 : q1.team1;
+                        slots.q1_winner = w; slots.q1_loser = l;
+                        return slots[slotKey];
+                    }
+                    return null;
+                }
+                if (slotKey === 'eliminator_winner') {
+                    const el = matchById[23];
+                    if (el && el.completed && el.team1 && el.team2) {
+                        slots.eliminator_winner = el.score1 > el.score2 ? el.team1 : el.team2;
+                        return slots.eliminator_winner;
+                    }
+                    return null;
+                }
+                if (slotKey === 'q2_winner') {
+                    const q2 = matchById[24];
+                    if (q2 && q2.completed && q2.team1 && q2.team2) {
+                        slots.q2_winner = q2.score1 > q2.score2 ? q2.team1 : q2.team2;
+                        return slots.q2_winner;
+                    }
+                    return null;
+                }
+                return null;
+            };
+
+            // Fill team1/team2 on each playoff match if currently null
+            tournamentData.matches.forEach(m => {
+                if (m.slot1 && !m.team1) m.team1 = resolved(m.slot1);
+                if (m.slot2 && !m.team2) m.team2 = resolved(m.slot2);
+            });
+        }
+
         function renderSchedule() {
             const container = document.getElementById('scheduleGrid');
+
+            // Resolve playoff slots before rendering (uses current standings)
+            const sortedForPlayoffs = Object.entries(standings || {}).sort((a, b) => {
+                if (b[1].points !== a[1].points) return b[1].points - a[1].points;
+                if (b[1].nrr !== a[1].nrr) return b[1].nrr - a[1].nrr;
+                return b[1].pointsFor - a[1].pointsFor;
+            });
+            resolvePlayoffSlots(sortedForPlayoffs);
 
             // Group by day, preserving order
             const groups = [];
@@ -1589,21 +1777,22 @@
             });
 
             const playerLine = (teamName) => {
+                if (!teamName) return '';
                 const t = tournamentData.teams[teamName];
-                if (!t) return '';
+                if (!t) return ''; // placeholder slot — no players to show yet
                 // Seniors teams use player pair as team name — skip duplicate sub-line
                 if (currentTournament === 'seniors') return '';
                 if (t.player1 === 'TBA' && t.player2 === 'TBA') return '<div class="team-players">Players TBA</div>';
                 return `<div class="team-players">${t.player1} &middot; ${t.player2}</div>`;
             };
 
-            const renderRow = (teamName, score, isWinner, isCompleted) => `
-                <div class="team-row ${isWinner ? 'winner' : ''}">
+            const renderRow = (teamName, score, isWinner, isCompleted, isPlaceholder) => `
+                <div class="team-row ${isWinner ? 'winner' : ''} ${isPlaceholder ? 'placeholder' : ''}">
                     <div class="team-info">
                         <div class="team-name">
                             ${isWinner ? '<span class="winner-mark">👑</span>' : ''}${teamName}
                         </div>
-                        ${playerLine(teamName)}
+                        ${playerLine(isPlaceholder ? null : teamName)}
                     </div>
                     <div class="team-score">${score !== null ? score : '–'}</div>
                 </div>
@@ -1613,21 +1802,35 @@
                 const w1 = m.completed && m.score1 > m.score2;
                 const w2 = m.completed && m.score2 > m.score1;
                 const cardClass = m.completed ? 'completed' : 'upcoming';
-                const statusLabel = m.completed ? 'Completed' : 'Upcoming';
-                const statusClass = m.completed ? 'completed' : '';
+                const statusLabel = m.completed ? 'Completed' : (m.stage ? m.stage : 'Upcoming');
+                const statusClass = m.completed ? 'completed' : (m.stage ? 'stage' : '');
+                const team1Display = m.team1 || m.placeholder1 || 'TBD';
+                const team2Display = m.team2 || m.placeholder2 || 'TBD';
+                const isPlace1 = !m.team1;
+                const isPlace2 = !m.team2;
+                const stageBanner = m.stage && !m.completed
+                    ? `<div class="match-stage-banner">${stageEmoji(m.stage)} ${m.stage}</div>` : '';
                 return `
-                    <div class="match-card ${cardClass}">
+                    <div class="match-card ${cardClass} ${m.stage ? 'playoff' : ''}">
                         <div class="match-meta">
-                            <span class="match-number-chip">Match · #${m.id}</span>
-                            <span class="match-status ${statusClass}">${statusLabel}</span>
+                            <span class="match-number-chip">${m.stage ? m.stage.toUpperCase() : 'Match · #' + m.id}</span>
+                            <span class="match-status ${statusClass}">${m.completed ? 'Completed' : 'Upcoming'}</span>
                         </div>
                         <div class="match-body">
-                            ${renderRow(m.team1, m.score1, w1, m.completed)}
-                            ${renderRow(m.team2, m.score2, w2, m.completed)}
+                            ${renderRow(team1Display, m.score1, w1, m.completed, isPlace1)}
+                            ${renderRow(team2Display, m.score2, w2, m.completed, isPlace2)}
                         </div>
                     </div>
                 `;
             };
+
+            function stageEmoji(stage) {
+                if (stage === 'Qualifier 1') return '🥇';
+                if (stage === 'Eliminator') return '⚔️';
+                if (stage === 'Qualifier 2') return '🎯';
+                if (stage === 'Grand Final') return '🏆';
+                return '';
+            }
 
             container.innerHTML = groups.map(g => `
                 <div class="day-group">
@@ -1643,11 +1846,56 @@
         }
         
         function updateKnockouts(sortedTeams) {
-            if (sortedTeams && sortedTeams.length >= 4 && sortedTeams[0][1].played >= 6) {
-                document.getElementById('sf1Team1').textContent = sortedTeams[0][0];
-                document.getElementById('sf1Team2').textContent = sortedTeams[3][0];
-                document.getElementById('sf2Team1').textContent = sortedTeams[1][0];
-                document.getElementById('sf2Team2').textContent = sortedTeams[2][0];
+            // Only meaningful when at least 4 teams have completed all their league matches
+            if (!sortedTeams || sortedTeams.length < 4) return;
+            const leagueComplete = sortedTeams[0][1].played >= 6;
+            if (!leagueComplete) return;
+
+            // Helper: get a match by id from current tournament data
+            const byId = {};
+            tournamentData.matches.forEach(m => { if (m.id) byId[m.id] = m; });
+
+            const setText = (id, val) => {
+                const el = document.getElementById(id);
+                if (el) el.textContent = val;
+            };
+
+            // Qualifier 1 — top 2 from standings
+            setText('q1Team1', sortedTeams[0][0]);
+            setText('q1Team2', sortedTeams[1][0]);
+
+            // Eliminator — ranks 3 and 4
+            setText('elimTeam1', sortedTeams[2][0]);
+            setText('elimTeam2', sortedTeams[3][0]);
+
+            // Scores from playoff matches if completed
+            const fillScore = (matchId, t1Id, t2Id, s1Id, s2Id) => {
+                const m = byId[matchId];
+                if (m && m.completed) {
+                    setText(s1Id, m.score1);
+                    setText(s2Id, m.score2);
+                }
+            };
+            fillScore(22, 'q1Team1', 'q1Team2', 'q1Score1', 'q1Score2');
+            fillScore(23, 'elimTeam1', 'elimTeam2', 'elimScore1', 'elimScore2');
+            fillScore(24, 'q2Team1', 'q2Team2', 'q2Score1', 'q2Score2');
+            fillScore(25, 'finalTeam1', 'finalTeam2', 'finalScore1', 'finalScore2');
+
+            // Q2 teams: Q1 loser + Eliminator winner
+            const q1 = byId[22], elim = byId[23], q2 = byId[24], final = byId[25];
+            if (q1 && q1.completed) {
+                const q1Loser  = q1.score1 > q1.score2 ? q1.team2 : q1.team1;
+                const q1Winner = q1.score1 > q1.score2 ? q1.team1 : q1.team2;
+                setText('q2Team1', q1Loser);
+                setText('finalTeam1', q1Winner);
+            }
+            if (elim && elim.completed) {
+                const elimWinner = elim.score1 > elim.score2 ? elim.team1 : elim.team2;
+                setText('q2Team2', elimWinner);
+            }
+            if (q2 && q2.completed) {
+                const q2Winner = q2.score1 > q2.score2 ? q2.team1 : q2.team2;
+                setText('finalTeam2', q2Winner);
             }
         }
         
