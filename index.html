@@ -894,10 +894,10 @@
         .committee-title::after  { left: 100%;  margin-left: 12px; }
 
         .committee-grid {
-            display: grid;
-            grid-template-columns: repeat(5, 1fr);
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
             gap: 12px;
-            justify-items: center;
         }
 
         .organiser {
@@ -906,7 +906,7 @@
             align-items: center;
             text-align: center;
             min-width: 0;
-            width: 100%;
+            width: 84px;
         }
 
         .organiser-badge {
@@ -1018,7 +1018,7 @@
                 width: 30px;
             }
 
-            .team-cell {
+            .standings-table td.team-cell {
                 font-size: 0.82rem;
                 text-align: left;
                 position: sticky;
@@ -1172,10 +1172,8 @@
             .standings-table td { padding: 6px 3px; font-size: 0.74rem; }
 
             .committee-band { padding: 22px 14px 24px; }
-            .committee-grid {
-                grid-template-columns: repeat(3, 1fr);
-                gap: 16px 10px;
-            }
+            .committee-grid { gap: 16px 10px; }
+            .organiser { width: 72px; }
             .organiser-badge {
                 width: 44px;
                 height: 44px;
@@ -1233,10 +1231,10 @@
 
                 <!-- Tournament Tab Switcher -->
                 <div class="tab-switcher" role="tablist">
-                    <button class="tab-btn active" data-tab="juniors" role="tab" aria-selected="true">
+                    <button class="tab-btn" data-tab="juniors" role="tab" aria-selected="false">
                         🏸 Juniors
                     </button>
-                    <button class="tab-btn" data-tab="seniors" role="tab" aria-selected="false">
+                    <button class="tab-btn active" data-tab="seniors" role="tab" aria-selected="true">
                         🏆 Seniors
                     </button>
                 </div>
@@ -1433,7 +1431,7 @@
         };
 
         let allTournaments = {};
-        let currentTournament = 'juniors';
+        let currentTournament = 'seniors';
 
         async function loadData() {
             try {
