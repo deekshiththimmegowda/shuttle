@@ -1534,24 +1534,35 @@
                     ]
                 };
 
-                // SENIORS TOURNAMENT — 3 teams, double round-robin (IPL-style), 6 matches
+                // SENIORS TOURNAMENT — 5 teams, single round-robin, top 4 to knockouts (best-of-3 each match)
                 allTournaments.seniors = {
                     label: 'Seniors',
-                    dateLabel: 'Tomorrow',
+                    dateLabel: '6:30 AM Start',
                     teams: {
-                        "KASHI RAO & SATISH":      { player1: "Kashi Rao",   player2: "Satish" },
-                        "NAGABHUSHAN & SHIVKUMAR": { player1: "Nagabhushan", player2: "Shivkumar" },
-                        "DEEKSHITH & MANU":        { player1: "Deekshith",   player2: "Manu" }
+                        "KASHI RAO & DEEKSHITH":  { player1: "Kashi Rao",   player2: "Deekshith" },
+                        "SATISH & SHIVKUMAR":     { player1: "Satish",      player2: "Shivkumar" },
+                        "NAGABHUSHAN & MAHESH":   { player1: "Nagabhushan", player2: "Mahesh" },
+                        "MANISH & KITTY":         { player1: "Manish",      player2: "Kitty" },
+                        "MAHADEV & SRINIVAS":     { player1: "Mahadev",     player2: "Srinivas" }
                     },
                     matches: [
-                        // ROUND 1 — Tomorrow
-                        { id: 1, team1: "KASHI RAO & SATISH",      team2: "NAGABHUSHAN & SHIVKUMAR", time: "6:00 AM", day: "Tomorrow", score1: null, score2: null, completed: false },
-                        { id: 2, team1: "KASHI RAO & SATISH",      team2: "DEEKSHITH & MANU",        time: "6:30 AM", day: "Tomorrow", score1: null, score2: null, completed: false },
-                        { id: 3, team1: "NAGABHUSHAN & SHIVKUMAR", team2: "DEEKSHITH & MANU",        time: "7:00 AM", day: "Tomorrow", score1: 0, score2: 2, completed: true },
-                        // ROUND 2 — TBD
-                        { id: 4, team1: "KASHI RAO & SATISH",      team2: "NAGABHUSHAN & SHIVKUMAR", time: "TBA",    day: "Round 2", score1: null, score2: null, completed: false },
-                        { id: 5, team1: "KASHI RAO & SATISH",      team2: "DEEKSHITH & MANU",        time: "TBA",    day: "Round 2", score1: null, score2: null, completed: false },
-                        { id: 6, team1: "NAGABHUSHAN & SHIVKUMAR", team2: "DEEKSHITH & MANU",        time: "TBA",    day: "Round 2", score1: null, score2: null, completed: false }
+                        // LEAGUE — round robin, best of 3 games (21 pts each), score = games won
+                        { id: 1,  team1: "SATISH & SHIVKUMAR",    team2: "MANISH & KITTY",        time: "6:30 AM", day: "Upcoming", score1: null, score2: null, completed: false },
+                        { id: 2,  team1: "KASHI RAO & DEEKSHITH", team2: "MAHADEV & SRINIVAS",    time: "7:00 AM", day: "Upcoming", score1: null, score2: null, completed: false },
+                        { id: 3,  team1: "KASHI RAO & DEEKSHITH", team2: "SATISH & SHIVKUMAR",   time: "TBA", day: "Upcoming", score1: null, score2: null, completed: false },
+                        { id: 4,  team1: "KASHI RAO & DEEKSHITH", team2: "NAGABHUSHAN & MAHESH",  time: "TBA", day: "Upcoming", score1: null, score2: null, completed: false },
+                        { id: 5,  team1: "KASHI RAO & DEEKSHITH", team2: "MANISH & KITTY",        time: "TBA", day: "Upcoming", score1: null, score2: null, completed: false },
+                        { id: 6,  team1: "SATISH & SHIVKUMAR",    team2: "NAGABHUSHAN & MAHESH",  time: "TBA", day: "Upcoming", score1: null, score2: null, completed: false },
+                        { id: 7,  team1: "SATISH & SHIVKUMAR",    team2: "MAHADEV & SRINIVAS",    time: "TBA", day: "Upcoming", score1: null, score2: null, completed: false },
+                        { id: 8,  team1: "NAGABHUSHAN & MAHESH",  team2: "MANISH & KITTY",        time: "TBA", day: "Upcoming", score1: null, score2: null, completed: false },
+                        { id: 9,  team1: "NAGABHUSHAN & MAHESH",  team2: "MAHADEV & SRINIVAS",    time: "TBA", day: "Upcoming", score1: null, score2: null, completed: false },
+                        { id: 10, team1: "MANISH & KITTY",        team2: "MAHADEV & SRINIVAS",    time: "TBA", day: "Upcoming", score1: null, score2: null, completed: false },
+
+                        // PLAYOFFS — IPL format, best of 3 games of 21 pts; score shown as games won
+                        { id: 11, team1: null, team2: null, time: "TBA", day: "Playoffs", score1: null, score2: null, completed: false, stage: "Qualifier 1", slot1: "rank1", slot2: "rank2", placeholder1: "Rank #1", placeholder2: "Rank #2" },
+                        { id: 12, team1: null, team2: null, time: "TBA", day: "Playoffs", score1: null, score2: null, completed: false, stage: "Eliminator", slot1: "rank3", slot2: "rank4", placeholder1: "Rank #3", placeholder2: "Rank #4" },
+                        { id: 13, team1: null, team2: null, time: "TBA", day: "Playoffs", score1: null, score2: null, completed: false, stage: "Qualifier 2", slot1: "q1_loser", slot2: "eliminator_winner", placeholder1: "Q1 Loser", placeholder2: "Eliminator Winner" },
+                        { id: 14, team1: null, team2: null, time: "TBA", day: "Playoffs", score1: null, score2: null, completed: false, stage: "Grand Final", slot1: "q1_winner", slot2: "q2_winner", placeholder1: "Q1 Winner", placeholder2: "Q2 Winner" }
                     ]
                 };
 
@@ -1570,20 +1581,13 @@
             document.getElementById('matchCount').textContent = tournamentData.matches.length;
             document.getElementById('dateLabel').textContent = tournamentData.dateLabel;
 
-            // Qualification badge + knockout visibility depend on tournament size
-            const isSeniors = currentTournament === 'seniors';
+            // Both tournaments: 5+ teams, single round-robin, top 4 to knockouts
             const qualifyLabel = document.getElementById('qualifyLabel');
             const qualifyLink  = document.getElementById('qualifyLink');
             const knockoutsSection = document.getElementById('knockouts');
-            if (isSeniors) {
-                qualifyLabel.textContent = '🏆 Winner by Standings';
-                qualifyLink.setAttribute('href', '#standings');
-                if (knockoutsSection) knockoutsSection.style.display = 'none';
-            } else {
-                qualifyLabel.textContent = '🏆 Top 4 to Semifinals';
-                qualifyLink.setAttribute('href', '#knockouts');
-                if (knockoutsSection) knockoutsSection.style.display = '';
-            }
+            qualifyLabel.textContent = '🏆 Top 4 to Semifinals';
+            qualifyLink.setAttribute('href', '#knockouts');
+            if (knockoutsSection) knockoutsSection.style.display = '';
         }
 
         // Tab switching with fade-slide animation
@@ -1715,14 +1719,14 @@
                 rank3: top4[2] || null,
                 rank4: top4[3] || null
             };
-            const matchById = {};
-            tournamentData.matches.forEach(m => { if (m.id) matchById[m.id] = m; });
+            const matchByStage = {};
+            tournamentData.matches.forEach(m => { if (m.stage) matchByStage[m.stage] = m; });
 
             const resolved = (slotKey) => {
                 if (slots[slotKey]) return slots[slotKey];
                 // Derived slots: q1_loser, q1_winner, eliminator_winner, q2_winner
                 if (slotKey === 'q1_loser' || slotKey === 'q1_winner') {
-                    const q1 = matchById[22];
+                    const q1 = matchByStage['Qualifier 1'];
                     if (q1 && q1.completed && q1.team1 && q1.team2) {
                         const w = q1.score1 > q1.score2 ? q1.team1 : q1.team2;
                         const l = q1.score1 > q1.score2 ? q1.team2 : q1.team1;
@@ -1732,7 +1736,7 @@
                     return null;
                 }
                 if (slotKey === 'eliminator_winner') {
-                    const el = matchById[23];
+                    const el = matchByStage['Eliminator'];
                     if (el && el.completed && el.team1 && el.team2) {
                         slots.eliminator_winner = el.score1 > el.score2 ? el.team1 : el.team2;
                         return slots.eliminator_winner;
@@ -1740,7 +1744,7 @@
                     return null;
                 }
                 if (slotKey === 'q2_winner') {
-                    const q2 = matchById[24];
+                    const q2 = matchByStage['Qualifier 2'];
                     if (q2 && q2.completed && q2.team1 && q2.team2) {
                         slots.q2_winner = q2.score1 > q2.score2 ? q2.team1 : q2.team2;
                         return slots.q2_winner;
@@ -1848,12 +1852,12 @@
         function updateKnockouts(sortedTeams) {
             // Only meaningful when at least 4 teams have completed all their league matches
             if (!sortedTeams || sortedTeams.length < 4) return;
-            const leagueComplete = sortedTeams[0][1].played >= 6;
+            const leagueComplete = sortedTeams[0][1].played >= (Object.keys(tournamentData.teams).length - 1);
             if (!leagueComplete) return;
 
-            // Helper: get a match by id from current tournament data
-            const byId = {};
-            tournamentData.matches.forEach(m => { if (m.id) byId[m.id] = m; });
+            // Helper: get a match by stage from current tournament data
+            const byStage = {};
+            tournamentData.matches.forEach(m => { if (m.stage) byStage[m.stage] = m; });
 
             const setText = (id, val) => {
                 const el = document.getElementById(id);
@@ -1869,20 +1873,20 @@
             setText('elimTeam2', sortedTeams[3][0]);
 
             // Scores from playoff matches if completed
-            const fillScore = (matchId, t1Id, t2Id, s1Id, s2Id) => {
-                const m = byId[matchId];
+            const fillScore = (stage, t1Id, t2Id, s1Id, s2Id) => {
+                const m = byStage[stage];
                 if (m && m.completed) {
                     setText(s1Id, m.score1);
                     setText(s2Id, m.score2);
                 }
             };
-            fillScore(22, 'q1Team1', 'q1Team2', 'q1Score1', 'q1Score2');
-            fillScore(23, 'elimTeam1', 'elimTeam2', 'elimScore1', 'elimScore2');
-            fillScore(24, 'q2Team1', 'q2Team2', 'q2Score1', 'q2Score2');
-            fillScore(25, 'finalTeam1', 'finalTeam2', 'finalScore1', 'finalScore2');
+            fillScore('Qualifier 1', 'q1Team1', 'q1Team2', 'q1Score1', 'q1Score2');
+            fillScore('Eliminator', 'elimTeam1', 'elimTeam2', 'elimScore1', 'elimScore2');
+            fillScore('Qualifier 2', 'q2Team1', 'q2Team2', 'q2Score1', 'q2Score2');
+            fillScore('Grand Final', 'finalTeam1', 'finalTeam2', 'finalScore1', 'finalScore2');
 
             // Q2 teams: Q1 loser + Eliminator winner
-            const q1 = byId[22], elim = byId[23], q2 = byId[24], final = byId[25];
+            const q1 = byStage['Qualifier 1'], elim = byStage['Eliminator'], q2 = byStage['Qualifier 2'], final = byStage['Grand Final'];
             if (q1 && q1.completed) {
                 const q1Loser  = q1.score1 > q1.score2 ? q1.team2 : q1.team1;
                 const q1Winner = q1.score1 > q1.score2 ? q1.team1 : q1.team2;
